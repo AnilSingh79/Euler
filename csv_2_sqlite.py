@@ -53,13 +53,13 @@ def csv_2_sqlite(fileIn,fileSQL,tabName,
             conn.execute(sqli)
         conn.commit()
         
+        return conn
         
     except Exception as err:
         sys.stderr.write(("ERROR ('read_data'):  %s\n") % str(err))
     finally:
         try:
             file_in.close()
-            conn.close()
         except Exception as err:
             pass
         
