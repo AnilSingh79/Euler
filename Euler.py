@@ -1,5 +1,5 @@
 #######################################
-# file: csv_2_sqlite                  #
+# File: Euler                         #
 # Author : Anil Pratap Singh          #
 #######################################
 
@@ -32,5 +32,5 @@ def get_bysql(query,conn,verbose=False):
         return dataSet  
     except Exception as err:
         sys.stderr.write(("ERROR ('get_bysql'):  %s\n") % str(err))
-        print ("\n\n****Exception Encountered****\n")
-        print ('Not Happy With \n'+query)
+        sys.stderr.write ("\n\n****Exception Encountered****\n")
+        sys.stderr.write ('Not Happy With \n'+query)
