@@ -34,3 +34,17 @@ def get_bysql(query,conn,verbose=False):
         sys.stderr.write(("ERROR ('get_bysql'):  %s\n") % str(err))
         sys.stderr.write ("\n\n****Exception Encountered****\n")
         sys.stderr.write ('Not Happy With \n'+query)
+     
+#Get a list of COLUMNS with a SELECT query
+def get_ncols_bysql(query,n,conn,verbose=False):
+    'Returns list of lists data fetched by query in columnXrow format'
+    try:
+        if n==1 : return get_1col_bysql(query, conn)
+        res = get_bysql(query,conn,verbose=verbose)
+        data_cols = []
+        for i in range(0,n):    
+            data_cols.append([line[i] for line in res])
+        return tuple(data_cols)
+    except Exception as err:
+        sys.stderr.write(err,'euler.get_ncols_bysql')
+        
